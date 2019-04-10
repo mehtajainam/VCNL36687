@@ -101,14 +101,6 @@ uint16_t VCNL36687::readData(uint8_t command_code)
   return reading;
 }
 
-void VCNL36687::write8(uint8_t address, uint8_t data) //Original
-{
-  Wire.beginTransmission(_i2caddr);
-  Wire.write(address);
-  Wire.write(data);
-  Wire.endTransmission();
-}
-
 uint8_t VCNL36687::write16_LowHigh(uint8_t address, uint8_t low, uint8_t high)
 {
   Wire.beginTransmission(_i2caddr);
@@ -117,6 +109,16 @@ uint8_t VCNL36687::write16_LowHigh(uint8_t address, uint8_t low, uint8_t high)
   Wire.write(high);
   Wire.endTransmission();
 }
+
+void VCNL36687::write8(uint8_t address, uint8_t data) //Original
+{
+  Wire.beginTransmission(_i2caddr);
+  Wire.write(address);
+  Wire.write(data);
+  Wire.endTransmission();
+}
+
+
 
 
 // Read 1 byte from the VCNL4000 at 'address'
