@@ -1,9 +1,18 @@
-#include <Wire.h>
-#include "VCNL36687.h"
+/********************************************************************************************
+VCNL36687_Proximity.ino
+Jainam Mehta
+jainam1995@gmail.com
+
+Example program for using the VCNL36687 library.
+
+The VCNL36687 library uses the standard I2C library and assumes that the default hardware 
+I2C ports for SDA and SCL are being utilized. The address of the VCNL36687 is hardcoded at 
+0x60 and cannot be changed.                                                                                                                             
+
+********************************************************************************************/
+#include "VCNL36687.h" // include the library
 
 VCNL36687 vcnl;
-// int reading;
-
 
 void setup() {
   Serial.begin(9600);
@@ -27,10 +36,6 @@ void loop() {
    
   Serial.print("Proximity: ");
   Serial.println(vcnl.readProximity());
-
-  // reading = vcnl.readProximity();
-  // Serial.println("Proximity = ");
-  // Serial.println(reading);
 
   delay(100);
 }
