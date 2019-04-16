@@ -1,19 +1,24 @@
-/*
-  VCNL36687.cpp - Library for 
-  Created by Jainam Mehta, April 10, 2019.
-  Released into the public domain.
+/**************************************************************************/
+/*! 
+  @file VCNL36687.cpp
+
+  @section intro Introduction
+  This is an Arduino library for the Vishay VCNL36687 VCSEL based proximity sensor
+
+  @section author Author
+  Jainam Mehta
+  jainam1995@gmail.com
 */
+/**************************************************************************/
 
-#include "VCNL36687.h"
-#include "Arduino.h"
-#include <Wire.h>
+#include "VCNL36687.h" // Include header definition
 
-
+/* Instantiate a new VCNL36687 class */
 VCNL36687::VCNL36687() {
   _i2caddr = VCNL36687_SlaveAddress;
 }
 
-
+/* Check that VCNL36687 exists and begin I2C communication */
 boolean VCNL36687::exists() {
   Wire.begin();
   uint8_t rev = 0;
@@ -38,7 +43,13 @@ boolean VCNL36687::exists() {
 }
 
 
+/**************************************************************************/
+/*!
+    @brief  Setup and basic functions to get a proximity reading
+*/
+/**************************************************************************/
 
+/* Set up initialization parameters */
 boolean VCNL36687::initialize() {
 
   SetVCSELCurrent(); // Set current to 20mA
@@ -52,31 +63,34 @@ boolean VCNL36687::initialize() {
   return true;
 }
 
-
-
-
-uint16_t VCNL36687::readProximity() {
-  return readData(VCNL36687_PS_DATA);
-}
-
-
+/* Set register CONF4 for VCSEL (laser) current 
+   VCSEL_I 2:0 - 7, 11, 14, 17 or 20mA */
 boolean VCNL36687::SetVCSELCurrent(uint8_t conf3, uint8_t conf4) {
   write16_LowHigh(VCNL36687_PS_CONF4, conf3, conf4);
   return true;
 }
 
-
+/* Set registers CONF1 and CONF2
+   PS_Period
+   PS_PERS
+   PS_INT
+   PS_SD (set to 0 to turn on proximity sensor) */
 boolean VCNL36687::CONF1(uint8_t conf1, uint8_t conf2) {
   write16_LowHigh(VCNL36687_PS_CONF1, conf1, conf2);
   return true;
 }
 
-
+/* Set register CONF5 (0x08)
+   POR_S (set to 1 to use proximity sensor) */
 boolean VCNL36687::CONF5(uint8_t conf5_L, uint8_t conf5_M) {
   write16_LowHigh(VCNL36687_PS_CONF5, conf5_L, conf5_M);
   return true;
 }
 
+/* Get 16-bit proximity measurement value */
+uint16_t VCNL36687::readProximity() {
+  return readData(VCNL36687_PS_DATA);
+}
 
 
 /**************************************************************************/
@@ -85,6 +99,7 @@ boolean VCNL36687::CONF5(uint8_t conf5_L, uint8_t conf5_M) {
 */
 /**************************************************************************/
 
+/* Read 2 bytes from the VCNL36687 */
 uint16_t VCNL36687::readData(uint8_t command_code)
 {
   uint16_t reading;
@@ -101,6 +116,7 @@ uint16_t VCNL36687::readData(uint8_t command_code)
   return reading;
 }
 
+/* Write 2 bytes to the VCNL36687, data byte low then high */
 uint8_t VCNL36687::write16_LowHigh(uint8_t address, uint8_t low, uint8_t high)
 {
   Wire.beginTransmission(_i2caddr);
@@ -110,6 +126,7 @@ uint8_t VCNL36687::write16_LowHigh(uint8_t address, uint8_t low, uint8_t high)
   Wire.endTransmission();
 }
 
+/* 8-bit I2C write function */
 void VCNL36687::write8(uint8_t address, uint8_t data) //Original
 {
   Wire.beginTransmission(_i2caddr);
@@ -117,7 +134,6 @@ void VCNL36687::write8(uint8_t address, uint8_t data) //Original
   Wire.write(data);
   Wire.endTransmission();
 }
-
 
 
 
