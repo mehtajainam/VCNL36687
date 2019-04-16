@@ -1,35 +1,27 @@
-    
 /**************************************************************************/
-/*!
-  @file     VCNL36687.h
-  Author: Jainam Mehta
-    
-    This is a library for the VCNL36687 proximity sensor by Vishay Semiconductors.
+/*! 
+  @file VCNL36687.h
 
+  @section intro Introduction
+  This is an Arduino library for the Vishay VCNL36687 VCSEL based proximity sensor
 
-@section VCNL36687 GNU General Public License v3.0
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General
-Public License as published by the Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details. You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-@section VCNL36687_author Author
-Written by Jainam Mehta
-
+  @section author Author
+  Jainam Mehta
+  jainam1995@gmail.com
 */
 /**************************************************************************/
+
 #ifndef VCNL36687_h
 #define VCNL36687_h
 
 
-#include "Arduino.h"
-#include <Wire.h>
+#include "Arduino.h" // Arduino data type definitions
+#include <Wire.h> // Standard I2C "Wire" library
 
 /********************************************
 ** Declare all constants used in the class **
 ********************************************/
+
 #define VCNL36687_SlaveAddress    0x60   ///< I2C address of the sensor
 
 /** Registers */
@@ -102,15 +94,13 @@ Written by Jainam Mehta
     @brief  The VCNL36687 class
 */
 /**************************************************************************/
-class VCNL36687 
-{
+class VCNL36687 {
   public:
     VCNL36687();
     boolean exists();
     boolean initialize();
-    // boolean begin(uint8_t a = VCNL36687_SlaveAddress, TwoWire *theWire = &Wire);
 
-    //Edit the binary settings here to change default startup options
+    // Edit the binary settings here to change default startup options
     boolean SetVCSELCurrent(uint8_t c3 = B00000000, uint8_t c4 = B00010100);
     boolean CONF1(uint8_t c1 = B10000000, uint8_t c2 = B01000000);
     boolean CONF5(uint8_t c5_L = B00000001, uint8_t c5_M = B00000000);
@@ -119,11 +109,6 @@ class VCNL36687
     
 
   private:
-    // void write8(uint8_t address, uint8_t data);
-    // void write16(uint8_t address, uint8_t data1, uint8_t data2);
-    // uint16_t read16(uint8_t address);
-    // uint8_t read8(uint8_t address);
-    
     void write8(uint8_t address, uint8_t data);
     uint8_t write16_LowHigh(uint8_t address, uint8_t low, uint8_t high);
     uint16_t readData(uint8_t command_code);
