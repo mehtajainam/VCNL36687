@@ -8,9 +8,6 @@ Through its standard I2C bus serial digital interface, the VCNL36687S allows eas
 
 Compared to previous generation devices, the VCNL36687S requires less energy to carry out the same functionality; with a 20 mA pulse current, the VCNL36687S can detect a Kodak Gray Card at a distance of 20 cm, where previous VCNL series devices required 200 mA of current.    
 
-* Datasheet: https://www.vishay.com/docs/84907/vcnl36687s.pdf
-* Eval board: http://www.vishay.com/landingpage/SensorXplorer/
-
 ## Usage
 
 This library supports I2C commmunication with the VCNL36687, 2 pins are required to interface
