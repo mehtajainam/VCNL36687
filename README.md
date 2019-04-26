@@ -14,7 +14,7 @@ This library supports I2C commmunication with the VCNL36687, 2 pins are required
 
 ### Installation
 
-Simply clone or download this library into your Arduino/libraries folder.
+Use the Arduino IDE Library Manager or simply download this library into your Arduino/libraries folder.
 
 ### Proximity sensing
 
