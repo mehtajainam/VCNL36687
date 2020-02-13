@@ -1,5 +1,5 @@
 # VCNL36687 Arduino library
-Arduino library for the [VCNL36687 proximity sensor](http://www.vishay.com/ppg?84907)
+Arduino library for the [VCNL36687 proximity sensor](http://www.vishay.com/ppg?84907) by Jainam Mehta
 
 ## Sensor description
 VCNL36687S by Vishay Intertechnology, Inc is a fully integrated proximity sensor that combines a high power vertical-cavity surface-emitting laser (VCSEL), a photodiode, a signal processing IC, and a 12-bit ADC in a single package. The new VCNL36687S is designed to be used in smartphones, tablets, virtual reality / augmented reality (VR / AR) headsets and other battery-operated devices.
