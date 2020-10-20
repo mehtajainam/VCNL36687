@@ -48,3 +48,4 @@ Addtional resistors (2.4 kΩ to 10 kΩ) should be used as pullups on SCL and SDA
 This library has been tested with:
 * Arduino Uno
 * nRF52 Development Kit from Nordic
+* ESP32
