@@ -21,7 +21,6 @@ VCNL36687::VCNL36687() {
 /* Check that VCNL36687 exists and begin I2C communication */
 boolean VCNL36687::exists() {
   Wire.begin();
-  uint8_t rev = 0;
   Wire.beginTransmission(_i2caddr);
   Wire.write(VCNL36687_PS_ID);
   Wire.endTransmission(false);
@@ -117,7 +116,7 @@ uint16_t VCNL36687::readData(uint8_t command_code)
 }
 
 /* Write 2 bytes to the VCNL36687, data byte low then high */
-uint8_t VCNL36687::write16_LowHigh(uint8_t address, uint8_t low, uint8_t high)
+void VCNL36687::write16_LowHigh(uint8_t address, uint8_t low, uint8_t high)
 {
   Wire.beginTransmission(_i2caddr);
   Wire.write(address);
