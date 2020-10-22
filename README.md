@@ -27,6 +27,7 @@ The proximity sensor has a range of approximately 20 cm (or 7.9 in.)
 ## Hardware
 
 Please refer to the [VCNL36687 datasheet](https://www.vishay.com/docs/84907/vcnl36687s.pdf) and your microcontroller's pinout diagram. This library was developed using the [VCNL36687S Sensor Evaluation Board](http://www.vishay.com/docs/84967/vcnl36687ssensorboardfiles.pdf) from Vishay Semiconductors. 
+And it tested ESP32 with [MIKROE-3439](https://www.mikroe.com/proximity-8-click).
 
 ### Wiring and I2C
 
@@ -48,3 +49,4 @@ Addtional resistors (2.4 kΩ to 10 kΩ) should be used as pullups on SCL and SDA
 This library has been tested with:
 * Arduino Uno
 * nRF52 Development Kit from Nordic
+* ESP32
